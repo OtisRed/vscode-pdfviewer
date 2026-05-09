@@ -1,9 +1,9 @@
 {
-  "name": "pdf",
-  "displayName": "vscode-pdf",
-  "description": "Display pdf file in VSCode.",
+  "name": "reflex-pdfviewer",
+  "displayName": "Reflex PDF Viewer",
+  "description": "Reflex-aware PDF research surface (fork of vscode-pdfviewer).",
   "version": "1.2.2",
-  "publisher": "tomoki1207",
+  "publisher": "OtisRed",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -12,18 +12,20 @@
   ],
   "keywords": [
     "pdf",
-    "viewer"
+    "viewer",
+    "zotero",
+    "reflex"
   ],
   "icon": "vscode-pdf.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomoki1207/vscode-pdfviewer.git"
+    "url": "https://github.com/OtisRed/vscode-pdfviewer.git"
   },
   "bugs": {
-    "url": "https://github.com/tomoki1207/vscode-pdfviewer/issues"
+    "url": "https://github.com/OtisRed/vscode-pdfviewer/issues"
   },
   "activationEvents": [
-    "onCustomEditor:pdf.preview"
+    "onCustomEditor:reflex-zotero.pdfPreview"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -34,8 +36,8 @@
     },
     "customEditors": [
       {
-        "viewType": "pdf.preview",
-        "displayName": "Pdf Preview",
+        "viewType": "reflex-zotero.pdfPreview",
+        "displayName": "Reflex PDF Viewer",
         "selector": [
           {
             "filenamePattern": "*.pdf"
@@ -45,7 +47,7 @@
     ],
     "configuration": {
       "type": "object",
-      "title": "PDF Preview",
+      "title": "Reflex PDF Viewer",
       "properties": {
         "pdf-preview.default.cursor": {
           "markdownDescription": "The default cursor tool for preview.",
