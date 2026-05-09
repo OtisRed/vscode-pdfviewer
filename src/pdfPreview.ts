@@ -38,6 +38,13 @@ export class PdfPreview extends Disposable {
             );
             break;
           }
+          case 'reflex-open-metadata': {
+            vscode.commands.executeCommand(
+              'reflex-zotero.openMetadataForPdf',
+              resource.toString()
+            );
+            break;
+          }
         }
       })
     );
@@ -395,6 +402,10 @@ export class PdfPreview extends Disposable {
 
                 <div id="editorModeSeparator" class="verticalToolbarSeparator"></div>
                 </div>
+                <button id="reflexOpenMetadata" class="toolbarButton" title="Open Metadata in Reflex-Zotero" tabindex="47">
+                  <span>Metadata</span>
+                </button>
+                <div class="verticalToolbarSeparator"></div>
                 <button id="secondaryToolbarToggle" class="toolbarButton" title="Tools" tabindex="48" data-l10n-id="tools" aria-expanded="false" aria-controls="secondaryToolbar">
                   <span data-l10n-id="tools_label">Tools</span>
                 </button>
@@ -537,6 +548,14 @@ export class PdfPreview extends Disposable {
     <div id="printContainer"></div>
 
     <input type="file" id="fileInput" class="hidden">
+  <script>
+  (function () {
+    const vscodeApi = acquireVsCodeApi();
+    document.getElementById('reflexOpenMetadata').addEventListener('click', function () {
+      vscodeApi.postMessage({ type: 'reflex-open-metadata' });
+    });
+  }());
+  </script>
   </body>`;
 
     const tail = ['</html>'].join('\n');
